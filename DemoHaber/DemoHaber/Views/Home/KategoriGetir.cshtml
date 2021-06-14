@@ -1,0 +1,30 @@
+﻿@using DemoHaber.Models
+@model List<Haber>
+@{
+    ViewBag.Title = "Ana Sayfa";
+    Layout = "~/Views/Taslak.cshtml";
+}
+<head></head>
+@foreach (var item in Model)
+{
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-4 col-lg-5 col-md-5 col-sm-6">
+                <a href="/Home/Haber/@item.HaberId"><img width="100%;" height="100%" src="@item.HaberKapakFoto" /></a>
+            </div>
+            <div class="col-xl-4 col-lg-7 col-md-7 col-sm-6">
+                <div class="row mt-2">
+                    <div class="col"><a style="text-decoration: none;color:white;" href="/Home/KategoriGetir/@item.Kategori.KategoriId"><h5 style="background-color:#cf161c;width:110px;height:27px;border-bottom-right-radius:20px;border-top-left-radius:20px;"><center>@item.Kategori.KategoriAd</center></h5></a></div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col"><h6><text style="text-transform: uppercase;">Burak Yılmam</text> <DİV style="border-right:1px solid black;margin-right:10px;"></DİV> @item.HaberEklenmeTarihi.ToString("d MMMMMMMMMM yyyy")</h6></div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col"><a style="text-decoration: none;color:black;" href="/Home/Haber/@item.HaberId"><h4>@item.HaberBaslik</h4></a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

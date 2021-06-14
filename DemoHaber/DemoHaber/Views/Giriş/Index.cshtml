@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Taslak.cshtml";
+}
+<style>
+.Login{
+    margin-top:50px;
+    margin-bottom:50px;
+    width:500px;
+    height:260px;
+}
+    .Login input {
+        background-color: #ebebeb;
+        border-radius: 5px;
+    }
+.Login input[type=text],input[type=password]{
+    width:80%;
+    border:none;
+}
+.Login input[type=password]{
+    margin-top:20px;
+    margin-bottom:5px;
+}
+.Login ::-webkit-input-placeholder{
+    text-align:center;
+}
+.Uye a{
+    text-decoration:none;
+    color:white;
+}
+</style>
+<div class="container Login bg-danger">
+    <form action="#" method="post">
+        <h3 class="text-center pt-4 pb-4 text-white">Giriş Formu</h3>
+        <div class="row justify-content-center">
+            <input type="text" name="AdminAd" placeholder="Kullanıcı Adını Giriniz." />
+        </div>
+        <div class="row justify-content-center">
+            <input type="password" name="AdminSifre" placeholder="Parolanızı Giriniz." />
+        </div>
+        <div class="row justify-content-center">
+            <input class="mt-3 mb-1" type="submit" style="background-color:#57b846;color:white;border:none;width:100px;" value="Giriş Yap" />
+        </div>
+        <div class="row Uye justify-content-center">
+            <a class="mt-2 text-center" href="">Üye Değil Misin ?</a>
+        </div>
+    </form>
+</div>
+

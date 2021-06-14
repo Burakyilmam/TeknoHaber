@@ -1,0 +1,23 @@
+﻿@model DemoHaber.Models.Admin
+@{
+    ViewBag.Title = "AdminPanel";
+    Layout = "~/Views/AdminTaslak.cshtml";
+}
+
+<center>
+    <h2>Hoşgeldin @ViewBag.a</h2>
+    @using (Html.BeginForm("Giriş", "AdminPanel", FormMethod.Post))
+    {
+        <table class="table table-bordered">
+                <tr>
+                    <th>Admin Ad</th>
+                    <th>Admin Şifre</th>
+                </tr>
+                <tr>
+                    <td>@HttpContext.Current.User.Identity.Name</td>
+                    <td>@Html.TextBoxFor(x=>x.AdminSifre)</td>
+                </tr>
+        </table>
+    }
+    <a href="/Giriş/LogOff/" class="btn btn-success">Oturumu Kapat</a>
+</center>

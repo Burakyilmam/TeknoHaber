@@ -1,0 +1,19 @@
+﻿@model DemoHaber.Models.Haber
+@{
+    ViewBag.Title = "Getir";
+    Layout = "~/Views/AdminTaslak.cshtml";
+}
+<center>
+    <h2 class="mt-4">Haber Güncelle</h2>
+    @using (Html.BeginForm("Guncelle", "Haber", FormMethod.Post))
+    {
+<div class="form-group container mt-4">
+    @Html.HiddenFor(x => x.HaberId)
+    <label class="mb-2">Başlık</label>@Html.TextBoxFor(x => x.HaberBaslik, new { @class = "form-control" }) <br />
+    <label class="mb-2">Kapak Fotoğraf</label>@Html.TextBoxFor(x => x.HaberKapakFoto, new { @class = "form-control" }) <br />
+    <label class="mb-2">Yazı</label>@Html.TextBoxFor(x => x.HaberYazi, new { @class = "form-control" }) <br />
+</div>
+        <button class="btn btn-success mt-4">Güncelle</button>
+    }
+</center>
+

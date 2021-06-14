@@ -1,0 +1,17 @@
+﻿@model DemoHaber.Models.Kategori
+@{
+    ViewBag.Title = "Getir";
+    Layout = "~/Views/AdminTaslak.cshtml";
+}
+<center>
+    <h2 class="mt-4">Kategori Güncelle</h2>
+    @using (Html.BeginForm("Guncelle", "Kategori", FormMethod.Post))
+    {
+        <div class="form-group container mt-4">
+            @Html.HiddenFor(x=>x.KategoriId)
+            <label class="mb-2">Kategori Adı </label>@Html.TextBoxFor(x => x.KategoriAd, new { @class = "form-control" })
+        </div>
+        <button class="btn btn-success mt-4">Güncelle</button>
+    }
+</center>
+

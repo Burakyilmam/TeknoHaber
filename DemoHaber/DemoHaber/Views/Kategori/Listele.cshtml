@@ -1,0 +1,27 @@
+﻿@using DemoHaber.Models;
+@model List<Kategori>
+@{
+    ViewBag.Title = "Listele";
+    Layout = "~/Views/AdminTaslak.cshtml";
+}
+<div class="container">
+    <table class="table table-bordered mt-4 text-center">
+        <tr>
+            <th>Kategori ID</th>
+            <th>Kategori Adı</th>
+            <th></th>
+            <th></th>
+        </tr>
+        @foreach (var kategori in Model)
+        {
+            <tr>
+                <td>@kategori.KategoriId</td>
+                <td>@kategori.KategoriAd</td>
+                <td><a href="/Kategori/Getir/@kategori.KategoriId" class="btn btn-warning">Güncelle</a></td>
+                <td><a href="/Kategori/Sil/@kategori.KategoriId" class="btn btn-danger">Sil</a></td>
+            </tr>
+        }
+    </table>
+    <center><a href="/Kategori/Ekle" class="btn btn-success">Ekle</a></center>
+</div>
+

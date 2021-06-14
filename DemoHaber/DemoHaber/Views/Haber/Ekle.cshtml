@@ -1,0 +1,56 @@
+﻿@using DemoHaber.Models
+@model DemoHaber.Models.Haber
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Views/AdminTaslak.cshtml";
+}
+<head>
+    <style>
+        * {
+            text-align: center;
+        }
+
+        input[type=date] {
+            width: 30%;
+        }
+
+        input[type=text] {
+            width: 30%;
+        }
+
+        input [type=submit] {
+            width: 50px !important;
+        }
+    </style>
+</head>
+
+<form class="form-group" method="post">
+    <input class="mt-4" type="text" name="HaberBaslik" placeholder="Haber Başlığını Giriniz" /><br />
+    <input class="mt-4" type="text" name="HaberKapakFoto" placeholder="Haber Fotoğraf Url Giriniz" /><br />
+    <input class="mt-4" type="text" name="HaberYazi" placeholder="Haber Yazısını Giriniz" /><br />
+    <input type="date" id="listingDateOpen" style="display:none;" name="HaberEklenmeTarihi" /><br /><br />
+    @using (Html.BeginForm())
+    {
+        @Html.DropDownListFor(x => x.Kategori.KategoriId, (List<SelectListItem>)ViewBag.dgr, new { @style = "width:30%;" }) <br />
+        <input class="mt-4" type="submit" value="Ekle" />
+    }
+</form>
+
+<script>
+    var a = document.getElementById("listingDateOpen")
+</script>
+<script>
+    let today = new Date(),
+        day = today.getDate(),
+        month = today.getMonth() + 1,
+        year = today.getFullYear();
+    if (day < 10) {
+        day = '0' + day
+    }
+    if (month < 10) {
+        month = '0' + month
+    }
+    today = year + '-' + month + '-' + day;
+    document.getElementById("listingDateOpen").setAttribute("min", today);
+    document.getElementById("listingDateOpen").setAttribute("value", today);
+</script>

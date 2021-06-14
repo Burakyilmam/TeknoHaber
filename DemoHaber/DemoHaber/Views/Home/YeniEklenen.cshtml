@@ -1,0 +1,74 @@
+﻿@using DemoHaber.Models
+@model List<Haber>
+@{
+    ViewBag.Title = "Ana Sayfa";
+    Layout = "~/Views/Taslak.cshtml";
+}
+<head>
+    <style>
+        #begeni {
+            background-color: #cf161c;
+            border-left: 1px solid white;
+        }
+
+            #begeni a {
+                text-decoration: none;
+                color: white;
+            }
+
+        #yeni {
+            background-color: #cf161c;
+            border-right: 1px solid white;
+        }
+
+            #yeni a {
+                text-decoration: none;
+                color: white;
+            }
+
+        #yorum {
+            background-color: #cf161c;
+        }
+
+            #yorum a {
+                text-decoration: none;
+                color: white;
+            }
+    </style>
+</head>
+<div class="container">
+    <div style="width:100%" class="row pt-2 pb-2 justify-content-center text-center">
+        <div id="yeni" class="col-3 bg-success">
+            <a href="/Home/YeniEklenen" class="text-center">Yeni Eklenenler</a>
+        </div>
+        <div id="yorum" class="col-3">
+            <a href="/Home/Yorumlanan" class="text-center">En Çok Yorumlanan</a>
+        </div>
+        <div id="begeni" class="col-3">
+            <a href="" class="text-center">En Çok Beğenilen</a>
+        </div>
+    </div>
+    <br />
+    <br />
+    @foreach (var item in Model)
+    {
+        <div class="row mb-4">
+            <div class="col-xxl-4 col-xl-4 col-lg-5 col-md-5 col-sm-6">
+                <a href="/Home/HaberSayfa/@item.HaberId/"><img width="100%;" height="100%" src="@item.HaberKapakFoto" /></a>
+            </div>
+            <div class="col-xxl-8 col-xl-8 col-lg-7 col-md-7 col-sm-6">
+                <div class="row mt-3">
+                    <div class="col"><a style="text-decoration: none;color:white;" href="/Home/KategoriGetir/@item.Kategori.KategoriId"><h5 style="background-color:#cf161c;width:110px;height:27px;border-bottom-right-radius:20px;border-top-left-radius:20px;"><center>@item.Kategori.KategoriAd</center></h5></a></div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col"><h6><text style="text-transform: uppercase;">Burak Yılmam</text> <DİV style="padding-right:5px; border-right:1px solid black;margin-right:10px;"></DİV> @item.HaberEklenmeTarihi.ToString("d MMMMMMMMMM yyyy")</h6></div>
+                </div>
+                <div class="row pt-4 pb-4">
+                    <div class="col"><a style="text-decoration: none;color:black;" href="/Home/HaberSayfa/@item.HaberId/"><h4>@item.HaberBaslik</h4></a></div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+

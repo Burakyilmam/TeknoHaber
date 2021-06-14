@@ -1,0 +1,23 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.title</title>
+    <link href="~/Content/bootstrap-5.0.1-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Content/bootstrap-5.0.1-dist/js/jquery-3.6.0.min.js"></script>
+    <script src="~/Content/bootstrap-5.0.1-dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <a href="/Haber/Listele">Haber</a>
+    <a href="/Kategori/Listele">Kategori</a>
+    <div> 
+        @RenderBody()
+    </div>
+</body>
+</html>

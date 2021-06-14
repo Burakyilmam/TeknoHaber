@@ -1,0 +1,60 @@
+﻿@using DemoHaber.Models
+@model List<Haber>
+
+@{
+    ViewBag.Title = "HaberSayfa";
+    Layout = "~/Views/Taslak.cshtml";
+}
+<style>
+    .baslik a {
+        text-decoration: none;
+        color: black;
+        font-size: 11px;
+        font-weight: 500;
+    }
+
+    .baslik span {
+        font-size: 11px;
+        color: black;
+        font-weight: 500;
+    }
+
+    .admin a {
+        text-decoration: none;
+        color: gray;
+        font-size: 14px;
+        font-weight: 500;
+    }
+</style>
+@foreach (var item in Model)
+{
+    <div class="row">
+        <div class="col baslik">
+            <a href="/Home/HaberListele">Anasayfa</a><span> > </span><a href="/Home/KategoriGetir/@item.Kategori.KategoriId">@item.Kategori.KategoriAd</a><span> > </span><a>@item.HaberBaslik</a>
+        </div>
+    </div>
+    <div style="margin-left:5px;margin-top:5px;font-weight:bold;" class="row">@item.HaberBaslik</div>
+    <div class="row">
+        <div class="col mb-2 admin">
+            <a style="margin-left:5px;margin-top:5px;font-weight:500;border-right:1px solid gray;padding-right:10px;">@item.Admin.AdminAd</a><a style="margin-left:5px;margin-top:5px;font-weight:500;padding-left:10px;">@item.HaberEklenmeTarihi.ToString("dd MMMM yyyy")</a>
+        </div>
+    </div>
+    <div class="row">
+        <div style="width:100%;height:380px;" class="col">
+            <img width="100%" height="100%" src="@item.HaberKapakFoto" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 mt-4 mb-4">
+            <p>@item.HaberYazi</p>
+        </div>
+        <div class="col-12 mt-4 mb-4">
+            <p>@item.HaberYazi</p>
+        </div>
+        <div class="col-12 mt-4 mb-4">
+            <p>@item.HaberYazi</p>
+        </div>
+    </div>
+}
+@Html.Action("AddComment", "Yorum")
+@Html.Action("ListComment", "Yorum")

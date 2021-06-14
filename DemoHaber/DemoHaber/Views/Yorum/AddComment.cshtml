@@ -1,0 +1,27 @@
+﻿<form style="background-color:darkgray;padding-top:25px;" method="post">
+    <center>
+        <h1 style="padding-top:20px;">Yorum Alanı</h1>
+        <input type="text" name="haberid" value="@ViewBag.deger" style="display:none;" />
+        <textarea style="width:50%;height:200px;margin-top:20px;margin-bottom:20px;" placeholder="Lütfen Yazmak İstediğiniz Mesajı Giriniz." required name="YorumYazi"></textarea>
+        <input type="date" id="listingDateOpen" style="display:none;" name="YorumEklenmeTarihi" />
+        <input type="submit" class="btn-success" style="border:none;margin-bottom:20px;width:100px" value="Gönder" />
+    </center>
+</form>
+<script>
+    var a = document.getElementById("listingDateOpen")
+</script>
+<script>
+    let today = new Date(),
+        day = today.getDate(),
+        month = today.getMonth() + 1,
+        year = today.getFullYear();
+    if (day < 10) {
+        day = '0' + day
+    }
+    if (month < 10) {
+        month = '0' + month
+    }
+    today = year + '-' + month + '-' + day;
+    document.getElementById("listingDateOpen").setAttribute("min", today);
+    document.getElementById("listingDateOpen").setAttribute("value", today);
+</script>

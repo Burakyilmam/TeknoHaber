@@ -1,0 +1,117 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.title</title>
+    <link href="~/Content/bootstrap-5.0.1-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Content/bootstrap-5.0.1-dist/js/jquery-3.6.0.min.js"></script>
+    <script src="~/Content/bootstrap-5.0.1-dist/js/bootstrap.min.js"></script>
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <style>
+        /* Logo */
+        .Logo {
+            background-color: #262626;
+            position: fixed;
+            overflow: hidden;
+            width: 100%;
+        }
+
+            .Logo a {
+                text-decoration: none;
+                color: white;
+                text-align: center;
+                font-size: 28px;
+                font-weight: 500;
+                margin-bottom: 5px;
+            }
+
+        span {
+            color: orangered;
+        }
+        /* Menu */
+        .Menu {
+            position: fixed;
+            top: 45px;
+            overflow: hidden;
+            width: 100%;
+        }
+
+            .Menu a {
+                text-decoration: none;
+                display: block;
+                color: white;
+            }
+
+            .Menu div {
+                background-color: orangered;
+            }
+
+            .Menu a:hover {
+                border-bottom: 5px solid black;
+                border-top: 5px solid black;
+                font-weight: bold;
+            }
+        /*Arama*/
+        .Buton {
+            background-color: #f5f5f5;
+            padding-top: 80px;
+        }
+
+            .Buton input[type=text] {
+                margin-top: 12px;
+                width: 80%;
+            }
+
+            .Buton input[type=submit] {
+                width: 40px;
+                height: 30px;
+                margin-left: -8px;
+                background-color: orangered;
+                color: white;
+                border: 1px solid orangered;
+            }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="Header">
+            <div class="row Logo">
+                <a href="/Home/HaberListele"><span>Tekno</span>Haber</a>
+            </div>
+            <div class="row Menu">
+                <div class="col-sm-2 text-center"><a href="/Home/KategoriGetir/1">Gündem</a></div>
+                <div class="col-sm-2 text-center"><a href="/Home/KategoriGetir/2">Oyun</a></div>
+                <div class="col-sm-2 text-center"><a href="/Home/KategoriGetir/3">Sinema</a></div>
+                <div class="col-sm-2 text-center"><a href="/Home/KategoriGetir/4">Teknoloji</a></div>
+                <div class="col-sm-2 text-center"><a href="/Home/KategoriGetir/5">Bilim</a></div>
+                <div class="col-sm-2 text-center"><a href="/Giriş/Index">Giriş Yap</a></div>
+            </div>
+            <div class="row Buton">
+                <center>
+                    <div class="col">
+                        @using (Html.BeginForm("HaberListele", "Home", FormMethod.Get))
+                        {
+                            <p>
+                                <input name="p" type="text" placeholder="Haber Başlığını Giriniz." />
+                                <input type="submit"onclick="myFunction()" value="Ara" />
+                            </p>
+                        }
+                    </div>
+                </center>
+            </div>
+        </div>
+        <div class="Content">
+            @RenderBody()
+        </div>
+        <div class="Footer">
+
+        </div>
+    </div>    
+</body>
+</html>

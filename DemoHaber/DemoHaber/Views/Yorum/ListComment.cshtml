@@ -1,0 +1,8 @@
+﻿@using DemoHaber.Models
+@model List<Yorum>
+@foreach (var y in Model)
+{
+    <div style="width:100%;background-color:black">&nbsp;</div>
+    <div style="padding-left:10px;padding-top:5px;padding-bottom:5px;">@y.YorumEklenmeTarihi.ToString("dd MMMM yyyy")</div>
+    <div style="padding-left:10px;padding-top:10px;">@y.YorumYazi</div>
+}
