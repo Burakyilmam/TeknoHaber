@@ -1,2 +1,2 @@
 # TeknoHaber
-Teknoloji Haber Sitesi
+Responsive , MVC mimarisini kullanan , Teknoloji Haber Sitesi
