@@ -1,38 +1,54 @@
 ﻿@using DemoHaber.Models
-@model List<Haber>
+@using PagedList
+@using PagedList.Mvc
+@model PagedList<Haber>
+@*@model List < Haber*@
 @{
     ViewBag.Title = "Ana Sayfa";
     Layout = "~/Views/Taslak.cshtml";
 }
 <head>
     <style>
-        #begeni {
-            background-color: #cf161c;
-            border-left: 1px solid white;
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            justify-content: center;
         }
 
-            #begeni a {
+        li {
+            margin-left: 5px;
+            border: 1px solid #bbb;
+        }
+
+            li a {
+                display: block;
+                color: Black;
+                font-weight: 500;
+                text-align: center;
+                padding: 6px 14px;
                 text-decoration: none;
-                color: white;
             }
 
-        #yeni {
-            background-color: #cf161c;
-            border-right: 1px solid white;
+                li a:hover:not(.active) {
+                    background-color: orangered;
+                    color: white;
+                }
+
+        .active {
+            background-color: orangered;
+            color: white;
         }
 
-            #yeni a {
-                text-decoration: none;
-                color: white;
-            }
-
-        #yorum {
-            background-color: #cf161c;
+        #yeni, #begeni, #yorum {
+            background-color: red;border:2px solid white;
         }
 
-            #yorum a {
-                text-decoration: none;
+            #yeni a , #yorum a , #begeni a{
                 color: white;
+                text-decoration: none;
+                
             }
     </style>
 </head>
@@ -70,5 +86,9 @@
         </div>
     }
 </div>
-
+<div id="sayfalar" class="col-12">
+    <div class="row mb-2 justify-content-center">
+        @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("HaberListele", new { sayfa }), new PagedListRenderOptions { LinkToFirstPageFormat = "<<", LinkToPreviousPageFormat = "<", LinkToNextPageFormat = ">", LinkToLastPageFormat = ">>", MaximumPageNumbersToDisplay = 3})
+    </div>
+</div>
 

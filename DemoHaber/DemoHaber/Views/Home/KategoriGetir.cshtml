@@ -1,10 +1,48 @@
 ﻿@using DemoHaber.Models
-@model List<Haber>
+@using PagedList
+@using PagedList.Mvc
+@model PagedList<Haber>
+@*@model List<Haber>*@
 @{
     ViewBag.Title = "Ana Sayfa";
     Layout = "~/Views/Taslak.cshtml";
 }
-<head></head>
+<head>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            justify-content: center;
+        }
+
+        li {
+            margin-left: 5px;
+            border: 1px solid #bbb;
+        }
+
+            li a {
+                display: block;
+                color: Black;
+                font-weight: 500;
+                text-align: center;
+                padding: 6px 14px;
+                text-decoration: none;
+            }
+
+                li a:hover:not(.active) {
+                    background-color: orangered;
+                    color: white;
+                }
+
+        .active {
+            background-color: orangered;
+            color: white;
+        }
+
+    </style>
+</head>
 @foreach (var item in Model)
 {
     <br />
@@ -27,4 +65,8 @@
         </div>
     </div>
 }
-
+<div id="sayfalar" class="col-12">
+    <div class="row justify-content-center">
+        @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("KategoriGetir", new { sayfa }), new PagedListRenderOptions { LinkToFirstPageFormat = "<<", LinkToPreviousPageFormat = "<", LinkToNextPageFormat = ">", LinkToLastPageFormat = ">>", MaximumPageNumbersToDisplay = 3 })
+    </div>
+</div>
