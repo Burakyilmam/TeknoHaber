@@ -1,2 +1,2 @@
 # TeknoHaber
-Responsive , MVC mimarisini kullanan , Teknoloji Haber Sitesi
+ASP .NET kullanılan , Responsive , MVC mimarisini kullanan , Teknoloji Haber Sitesi
